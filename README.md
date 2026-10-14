@@ -42,10 +42,12 @@ Nothing else is changed (same size, same weights, same graph). The DirectML prov
 only matters when a target shape contains a 0, and no `Reshape` of the model has a constant
 target shape with a 0, so the model computes the same function.
 
-Checked on two night hours (2,400 windows of 3 s, ONNX Runtime 1.24.4, AMD Radeon RX 5700):
-largest difference of a class probability against the original TorchScript model
-`BirdNET+_V3.0-preview3.1_Global_11K_FP32.pt` on the CPU 8.8e-5 with DirectML, 0 changed
-detections at the thresholds 0.15, 0.25 and 0.5, 0 changed top species.
+Checked on 1,832 labelled clips and 6 whole recordings (36,027 windows of 3 s, 30.0 audio hours,
+4 recorders, February to June, evening, night, dawn chorus and day; ONNX Runtime 1.24.4,
+DirectML, AMD Radeon RX 5700) against the original TorchScript model
+`BirdNET+_V3.0-preview3.1_Global_11K_FP32.pt` on the CPU, all 11,560 classes per window: largest
+difference of a class probability 2.5e-4, 0 changed top species, 0 changed detections at the
+thresholds 0.1, 0.15 and 0.25, 1 changed detection of 26,558 at 0.5.
 
 ## Use
 
